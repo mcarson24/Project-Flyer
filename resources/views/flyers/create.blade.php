@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <h1 class="text-center">Create A Flyer</h1>
+    <h1 class="text-center">Selling your Home?</h1>
 
 @endsection
