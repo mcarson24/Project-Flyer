@@ -1,4 +1,4 @@
-<form action="{{ action('FlyersController@store') }}" method="POST" enctype="multipart/form-data">
+@inject('countries', 'App\Http\Utilities\Country')
 
     {{ csrf_field() }}
 
@@ -49,4 +49,3 @@
 
     <button type="submit" class="btn btn-primary form-control">Create Flyer</button>
 
-</form>

@@ -1,5 +1,3 @@
-@inject('countries', 'App\Http\Utilities\Country')
-
 @extends('layout')
 
 @section('content')
@@ -12,7 +10,11 @@
         
             <hr class="create_flyer_title">
             
-            @include('flyers.partials._form')
+            <form action="{{ action('FlyersController@store') }}" method="POST" enctype="multipart/form-data">
+
+                @include('flyers.partials._form')
+
+            </form>
 
         </div>
 
