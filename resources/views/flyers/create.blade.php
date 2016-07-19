@@ -11,6 +11,8 @@
             <hr class="create_flyer_title">
             
             <form action="{{ action('FlyersController@store') }}" method="POST" enctype="multipart/form-data">
+
+                {{ csrf_field() }}
         
                 <div class="form-group">
                     <label for="street">Street:</label>
