@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
-});
+}]);
 
 Route::resource('flyers', 'FlyersController');
