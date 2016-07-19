@@ -15,4 +15,8 @@ Route::get('/', ['as' => 'home', function () {
     return view('pages.home');
 }]);
 
+Route::get('countries', function() {
+    return App\Http\Utilities\Country::all();
+});
+
 Route::resource('flyers', 'FlyersController');
