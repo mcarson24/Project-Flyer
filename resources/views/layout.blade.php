@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
   </head>
   <body>
-    <div class="container">
+    @include('pages.partials._navbar')
+    <div class="main container">
         @yield('content')
     </div>
   </body>
