@@ -28,6 +28,6 @@ $factory->define(App\Flyer::class, function (Faker\Generator $faker) {
         'state' => $faker->state,
         'country' => $faker->country,
         'price' => $faker->biasedNumberBetween(100000, 1000000),
-        'description' => $faker->paragraphs(4, false)
+        'description' => $faker->paragraphs(4, true)
     ];
 });

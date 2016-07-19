@@ -13,6 +13,6 @@ class Flyer extends Model
      */
     public function photos()
     {
-        return $this->hasMany(App\Flyer::class);
+        return $this->hasMany(Photo::class);
     }
 }
