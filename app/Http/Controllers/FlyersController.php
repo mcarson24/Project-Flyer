@@ -12,6 +12,12 @@ use App\Http\Requests\FlyerFormRequest;
 
 class FlyersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'store', 'addPhoto']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +68,7 @@ class FlyersController extends Controller
         ]);
 
         $photo = Photo::fromForm($request->file('photo'));
-        
+
         Flyer::locatedAt($zip, $street)->addPhoto($photo);
 
         return 'Done';
