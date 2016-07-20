@@ -15,5 +15,9 @@ hr {
     }
 }
 
-
-
+img {
+    &.flyer {
+        max-width: 100%;
+        margin: 5px;
+    }
+}

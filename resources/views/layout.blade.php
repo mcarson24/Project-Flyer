@@ -13,5 +13,6 @@
     </div>
     <script src="{{ asset('js/all.js') }}"></script>
     @include('flash')
+    @yield('scripts-footer')
   </body>
 </html>

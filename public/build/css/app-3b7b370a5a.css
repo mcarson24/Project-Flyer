@@ -5757,4 +5757,8 @@ ul {
 hr.create_flyer_title {
   border: 1px solid orange; }
 
+img.flyer {
+  max-width: 100%;
+  margin: 5px; }
+
 /*# sourceMappingURL=app.css.map */

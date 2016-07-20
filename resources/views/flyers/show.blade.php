@@ -2,22 +2,51 @@
 
 @section('content')
 
-    <h1 class="text-center">{{ $flyer->street }}</h1>
+    <div class="row">
 
-    <h2 class="text-center">{{ $flyer->price }}</h2>
+        <div class="col-md-4">
 
-    <div class="description">{!! nl2br($flyer->description) !!}</div>
+            <h1 class="text-center">{{ $flyer->street }}</h1>
 
-    <form action="http://project-flyer.dev/{{ $flyer->zip }}/{{ $flyer->slug }}/photos" method="POST" class="dropzone">
+            <h2 class="text-center">{{ $flyer->price }}</h2>
+
+            <div class="description">{!! nl2br($flyer->description) !!}</div>
+
+        </div>
+
+        <div class="col-md-8">
+            
+            @foreach ($flyer->photos as $photo)
+
+                <img src="{{ asset($photo->path) }}" alt="Image of {{ $flyer->street }}" class="flyer">
+            
+            @endforeach
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2 class="text-center">Add Your Photos</h2>
+
+    <form action="{{ route('store_photo_path', [$flyer->zip, $flyer->slug]) }}" method="POST" class="dropzone" id="addPhotosForm">
     
         {{ csrf_field() }}
 
     </form>
 
-    @foreach ($flyer->photos as $photo)
+    @section('scripts-footer')
 
-        <img src="{{ asset($photo->path) }}" alt="Image of {{ $flyer->street }}">
-    
-    @endforeach
+        <script>
+            Dropzone.options.addPhotosForm = {
+                paramName: 'photo',
+                maxFileSize: 3,
+                acceptedFiles: '.jpg, .jpeg, .png, .bmp'
+            };
+
+        </script>
+
+    @endsection
 
 @endsection
