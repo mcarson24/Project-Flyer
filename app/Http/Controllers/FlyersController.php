@@ -54,9 +54,10 @@ class FlyersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($zip, $street)
     {
-        //
+        $street = str_replace('-', ' ', $street);
+        return Flyer::locatedAt($zip, $street)->first();
     }
 
     /**

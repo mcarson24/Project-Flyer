@@ -31,4 +31,16 @@ class Flyer extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    /**
+     * Scope query for those flyers located at a given address.
+     * @param  Builder $query  
+     * @param  string $zip    
+     * @param  string $street 
+     * @return Builder         
+     */
+    public static function scopeLocatedAt($query, $zip, $street)
+    {
+        return $query->where(compact('zip', 'street'));
+    }
 }

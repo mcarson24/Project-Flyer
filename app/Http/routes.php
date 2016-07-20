@@ -19,4 +19,6 @@ Route::get('countries', function() {
     return App\Http\Utilities\Country::all();
 });
 
+Route::get('{zip}/{street}', 'FlyersController@show');
+
 Route::resource('flyers', 'FlyersController');
