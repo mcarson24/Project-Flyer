@@ -43,4 +43,9 @@ class Flyer extends Model
     {
         return $query->where(compact('zip', 'street'));
     }
+
+    public function getPriceAttribute($price)
+    {
+        return '$' . number_format($price);
+    }
 }

@@ -28,7 +28,6 @@ class FlyersController extends Controller
      */
     public function create()
     {
-        flash()->overlay('Awesome', 'Hello Poop!');
         return view('flyers.create');
     }
 
@@ -43,7 +42,7 @@ class FlyersController extends Controller
         Flyer::create($request->all());
 
         // Flash message
-        
+        flash()->success('Awesome', 'Your flyer was successfully created!');
         
         return back();
     }
@@ -57,7 +56,9 @@ class FlyersController extends Controller
     public function show($zip, $street)
     {
         $street = str_replace('-', ' ', $street);
-        return Flyer::locatedAt($zip, $street)->first();
+        $flyer =  Flyer::locatedAt($zip, $street)->first();
+
+        return view('flyers.show', compact('flyer'));
     }
 
     /**
