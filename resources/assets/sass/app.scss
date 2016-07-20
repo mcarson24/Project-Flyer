@@ -2,6 +2,8 @@
 
 @import 'partials/forms';
 
+@import 'partials/errors';
+
 .main {
     margin-top: 75px;
     margin-bottom: 100px;
@@ -12,4 +14,6 @@ hr {
         border: 1px solid orange;
     }
 }
+
+
 

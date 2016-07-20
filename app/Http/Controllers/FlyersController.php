@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Flyer;
 use App\Http\Utilities\Country;
 use App\Http\Requests;
+use App\Http\Requests\FlyerFormRequest;
 
 class FlyersController extends Controller
 {
@@ -32,12 +34,16 @@ class FlyersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\FlyerFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FlyerFormRequest $request)
     {
-        return $request->all();
+        Flyer::create($request->all());
+
+        // Flash message
+        
+        return back()->with('success', 'Flyer created successfully!');
     }
 
     /**

@@ -5736,6 +5736,20 @@ button.close {
 .form-control {
   height: 39px; }
 
+.help-block {
+  font-weight: bold;
+  color: #a94442; }
+
+.inputError1 {
+  border-color: #a94442; }
+
+ul {
+  list-style: none;
+  width: 75%;
+  margin: 0 auto; }
+  ul li {
+    font-weight: bold; }
+
 .main {
   margin-top: 75px;
   margin-bottom: 100px; }
