@@ -47,6 +47,20 @@ class FlyersController extends Controller
         return back();
     }
 
+    public function addPhoto( $zip, $street, Request $request)
+    {
+        $photo = $request->file('file');
+
+        $name = time() . '-' . $photo->getClientOriginalName();
+
+        $photo->move('flyers/photos/', $name);
+
+        $flyer = Flyer::locatedAt($zip, $street)->first();
+
+        $flyer->photos()->create(['path' => "flyers/photos/{$name}"]);
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -55,8 +69,7 @@ class FlyersController extends Controller
      */
     public function show($zip, $street)
     {
-        $street = str_replace('-', ' ', $street);
-        $flyer =  Flyer::locatedAt($zip, $street)->first();
+        $flyer = Flyer::locatedAt($zip, $street)->first();
 
         return view('flyers.show', compact('flyer'));
     }

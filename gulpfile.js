@@ -18,9 +18,11 @@ elixir(function(mix) {
        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/', 'public/build/fonts/bootstrap')
 
        .styles([
-            'libs/sweetalert.css'
+            'libs/sweetalert.css',
+            'libs/dropzone.css'
         ], 'public/css/all.css')
        .scripts([
-            'libs/sweetalert-dev.js'
+            'libs/sweetalert-dev.js',
+            'libs/dropzone.js'
         ], 'public/js/all.js');
 });

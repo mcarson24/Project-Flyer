@@ -41,11 +41,24 @@ class Flyer extends Model
      */
     public static function scopeLocatedAt($query, $zip, $street)
     {
+        $street = str_replace('-', ' ', $street);
+        
         return $query->where(compact('zip', 'street'));
     }
 
+    /**
+     * Format the price attribute.
+     * 
+     * @param  string $price 
+     * @return string        
+     */
     public function getPriceAttribute($price)
     {
         return '$' . number_format($price);
+    }
+
+    public function getSlugAttribute()
+    {
+        return str_replace(' ', '-', $this->street);
     }
 }
