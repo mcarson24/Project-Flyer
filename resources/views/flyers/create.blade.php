@@ -12,7 +12,7 @@
             <hr class="create_flyer_title">
 
             @if (session()->has('success'))
-                <span class="alert alert-success">{{ session('success') }}</span>
+                <div class="alert alert-success">{{ session('success') }}</div>
             @endif
             
             <form action="{{ action('FlyersController@store') }}" method="POST" enctype="multipart/form-data">
