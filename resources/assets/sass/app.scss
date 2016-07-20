@@ -1,5 +1,7 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import 'partials/forms';
+
 .main {
     margin-top: 75px;
     margin-bottom: 100px;
@@ -10,3 +12,4 @@ hr {
         border: 1px solid orange;
     }
 }
+

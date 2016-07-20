@@ -5733,6 +5733,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.form-control {
+  height: 39px; }
+
 .main {
   margin-top: 75px;
   margin-bottom: 100px; }
