@@ -33,6 +33,16 @@ class Flyer extends Model
     }
 
     /**
+     * A flyer is owned by a single user.
+     * 
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Get the flyers located at a given address.
      * 
      * @param  string $zip    

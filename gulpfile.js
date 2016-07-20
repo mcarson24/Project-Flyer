@@ -22,6 +22,8 @@ elixir(function(mix) {
             'libs/dropzone.css'
         ], 'public/css/all.css')
        .scripts([
+            'libs/jquery-2.2.4.js',
+            'libs/bootstrap-3.3.6.js',
             'libs/sweetalert-dev.js',
             'libs/dropzone.js'
         ], 'public/js/all.js');

@@ -5743,11 +5743,11 @@ button.close {
 .inputError1 {
   border-color: #a94442; }
 
-ul {
+.errors ul {
   list-style: none;
   width: 75%;
   margin: 0 auto; }
-  ul li {
+  .errors ul li {
     font-weight: bold; }
 
 .main {
