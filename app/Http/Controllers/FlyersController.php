@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Photo;
 use App\Flyer;
 use App\Http\Requests;
@@ -45,7 +46,8 @@ class FlyersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(FlyerFormRequest $request)
-    {
+    {   
+        $request->request->add(['user_id' => Auth::id()]);
         Flyer::create($request->all());
 
         // Flash message

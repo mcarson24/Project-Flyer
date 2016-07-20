@@ -15,7 +15,7 @@
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
             
-            <form action="{{ action('FlyersController@store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ action('FlyersController@store') }}" method="POST">
 
                 @include('flyers.partials._form')
 
