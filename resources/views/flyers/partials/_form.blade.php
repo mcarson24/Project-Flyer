@@ -70,10 +70,5 @@
         @endif
     </div>
 
-    <div class="form-group">
-        <label for="photos">Photos:</label>
-        <input type="file" id="photos" name="photos">
-    </div>
-
     <button type="submit" class="btn btn-primary form-control">Create Flyer</button>
 
