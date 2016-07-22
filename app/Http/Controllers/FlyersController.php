@@ -10,13 +10,16 @@ use App\Flyer;
 use App\Http\Requests;
 use App\Http\Utilities\Country;
 use App\Http\Requests\FlyerFormRequest;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class FlyersController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['create', 'store', 'addPhoto']]);
+        $this->middleware('auth', ['except' => ['show',]]);
     }
 
     /**
@@ -69,7 +72,7 @@ class FlyersController extends Controller
             'photo' => 'required|mimes:jpg,jpeg,png,bmp'
         ]);
 
-        $photo = Photo::fromForm($request->file('photo'));
+        $photo = $this->handlePhoto($request->file('photo'));        
 
         Flyer::locatedAt($zip, $street)->addPhoto($photo);
 
@@ -121,5 +124,11 @@ class FlyersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function handlePhoto(UploadedFile $photo)
+    {
+        return Photo::named($photo->getClientOriginalName())->store($photo);
+
     }
 }
