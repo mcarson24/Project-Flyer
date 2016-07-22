@@ -82,4 +82,9 @@ class Flyer extends Model
     {
         return str_replace(' ', '-', $this->street);
     }
+
+    public function path()
+    {
+        return $this->zip . '/' . $this->slug;
+    }
 }

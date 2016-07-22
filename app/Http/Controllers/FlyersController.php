@@ -59,7 +59,7 @@ class FlyersController extends Controller
         // Flash message
         flash()->success('Awesome', 'Your flyer was successfully created!');
         
-        return redirect($flyer->zip . '/' . $flyer->slug);
+        return redirect($flyer->path());
     }
 
     /**
