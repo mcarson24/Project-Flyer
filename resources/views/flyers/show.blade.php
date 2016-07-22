@@ -16,10 +16,16 @@
 
         <div class="col-md-8">
             
-            @foreach ($flyer->photos as $photo)
-
-                <img src="{{ asset($photo->path) }}" alt="Image of {{ $flyer->street }}" class="flyer">
-            
+            @foreach ($flyer->photos->chunk(4) as $row)
+                <div class="row">
+                   @foreach ($row as $photo)
+                   <div class="col-md-3">
+                        <a href="{{ asset($photo->path) }}">
+                            <img src="{{ asset($photo->thumbnail_path) }}" alt="Image of {{ $flyer->street }}" class="flyer">
+                        </a>
+                    </div>
+                @endforeach 
+                </div>
             @endforeach
 
         </div>
