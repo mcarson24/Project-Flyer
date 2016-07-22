@@ -31,7 +31,7 @@ class FlyersController extends Controller
      */
     public function index()
     {
-        //
+        return 'hi';
     }
 
     /**
@@ -53,12 +53,13 @@ class FlyersController extends Controller
     public function store(FlyerFormRequest $request)
     {   
         $request->request->add(['user_id' => Auth::id()]);
-        Flyer::create($request->all());
+
+        $flyer = Flyer::create($request->all());
 
         // Flash message
         flash()->success('Awesome', 'Your flyer was successfully created!');
         
-        return back();
+        return redirect($flyer->zip . '/' . $flyer->slug);
     }
 
     /**
