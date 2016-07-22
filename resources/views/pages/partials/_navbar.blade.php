@@ -17,10 +17,10 @@
       </ul>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      @if (\Auth::check())
+      @if ($signedIn)
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          {{ Auth::user()->name }}<span class="caret"></span></a>
+          {{ $user->name }}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ action('FlyersController@create') }}">Create a flyer</a></li>
             <li><a href="{{ action('Auth\AuthController@logout') }}">Logout</a></li>
