@@ -74,7 +74,7 @@ class Flyer extends Model
     }
 
     /**
-     * Format the street address for cleaner URLs.
+     * Format the street address for cleaner URIs.
      * 
      * @return string
      */
@@ -83,6 +83,11 @@ class Flyer extends Model
         return str_replace(' ', '-', $this->street);
     }
 
+    /**
+     * Return the path to the current flyer.
+     * 
+     * @return string 
+     */
     public function path()
     {
         return $this->zip . '/' . $this->slug;

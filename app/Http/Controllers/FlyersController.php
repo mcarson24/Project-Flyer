@@ -31,7 +31,7 @@ class FlyersController extends Controller
      */
     public function index()
     {
-        return 'hi';
+        //
     }
 
     /**

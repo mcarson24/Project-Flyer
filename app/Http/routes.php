@@ -13,9 +13,7 @@
 
 Route::auth();
 
-Route::get('/', ['as' => 'home', function () {
-    return view('pages.home');
-}]);
+Route::get('/', 'PagesController@home')->name('home');
 
 Route::resource('flyers', 'FlyersController');
 
