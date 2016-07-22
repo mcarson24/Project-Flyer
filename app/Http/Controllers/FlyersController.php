@@ -75,9 +75,23 @@ class FlyersController extends Controller
             'photo' => 'required|mimes:jpg,jpeg,png,bmp'
         ]);
 
-        $photo = $this->handlePhoto($request->file('photo'));        
+        $flyer = Flyer::locatedAt($zip, $street);
 
-        Flyer::locatedAt($zip, $street)->addPhoto($photo);
+        if ($flyer->user_id != Auth::id())
+        {
+            if ($request->ajax())
+            {
+                return response('Get out of here!', 403);
+            }
+
+            flash()->error('Get out of here!', 'We can\'t let you do that.');
+
+            return redirect('/');
+        }
+
+        $photo = $this->handlePhoto($request->file('photo'));  
+
+        $flyer->addPhoto($photo);
 
         return 'Done';
     }
