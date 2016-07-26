@@ -38,3 +38,13 @@ function isActiveRoute($route)
         return 'active';
     }
 }
+
+/**
+ * Return the path of a give flyer.
+ * 
+ * @return string 
+ */
+function flyer_path(App\Flyer $flyer)
+{
+    return $flyer->zip . '/' . $flyer->slug;
+}

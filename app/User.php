@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Flyer;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -34,12 +35,23 @@ class User extends Authenticatable
         return $this->hasMany(Flyer::class);
     }
 
+    /**
+     * Determine if the current user owns the submitted object.
+     * 
+     * @param         $relation 
+     * @return boolean           
+     */
     public function owns($relation)
     {
         return $relation->user_id == $this->id;
     }
 
-    public function createsFlyer($flyer)
+    /**
+     * Create a new flyer owned by the current user.
+     * @param  Flyer  $flyer 
+     * @return Flyer        
+     */
+    public function createsFlyer(Flyer $flyer)
     {
         return $this->flyers()->save($flyer);
     }
