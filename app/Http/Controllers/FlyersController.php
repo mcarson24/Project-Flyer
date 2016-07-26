@@ -10,13 +10,12 @@ use App\Flyer;
 use App\Http\Requests;
 use App\Http\Utilities\Country;
 use App\Http\Requests\FlyerFormRequest;
+use App\Http\Requests\ChangeFlyerRequest;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-
 class FlyersController extends Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -67,33 +66,13 @@ class FlyersController extends Controller
      * 
      * @param string  $zip     
      * @param string  $street  
-     * @param Request $request 
+     * @param ChangeFlyerRequest $request 
      */
-    public function addPhoto( $zip, $street, Request $request)
+    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
     {
-        $this->validate($request, [
-            'photo' => 'required|mimes:jpg,jpeg,png,bmp'
-        ]);
-
-        $flyer = Flyer::locatedAt($zip, $street);
-
-        if ($flyer->user_id != Auth::id())
-        {
-            if ($request->ajax())
-            {
-                return response('Get out of here!', 403);
-            }
-
-            flash()->error('Get out of here!', 'We can\'t let you do that.');
-
-            return redirect('/');
-        }
-
         $photo = $this->handlePhoto($request->file('photo'));  
 
-        $flyer->addPhoto($photo);
-
-        return 'Done';
+        Flyer::locatedAt($zip, $street)->addPhoto($photo);
     }
 
     /**
@@ -143,6 +122,12 @@ class FlyersController extends Controller
         //
     }
 
+    /**
+     * Handle creation and storage of photos.
+     * 
+     * @param  UploadedFile $photo $photo
+     * @return Photo
+     */
     protected function handlePhoto(UploadedFile $photo)
     {
         return Photo::named($photo->getClientOriginalName())->store($photo);

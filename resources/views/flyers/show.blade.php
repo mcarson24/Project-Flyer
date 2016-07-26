@@ -28,23 +28,24 @@
                 </div>
             @endforeach
 
+            @if ($user && $user->owns($flyer))
+
+            <hr>
+
+            <h2 class="text-center">Add Your Photos</h2>
+
+            <form action="{{ add_photo_path($flyer) }}" method="POST" class="dropzone" id="addPhotosForm">
+            
+                {{ csrf_field() }}
+
+            </form>
+
+    @endif
+
         </div>
 
     </div>
 
-    @if (\Auth::id() == $flyer->user_id)
-
-        <hr>
-
-        <h2 class="text-center">Add Your Photos</h2>
-
-        <form action="{{ route('store_photo_path', [$flyer->zip, $flyer->slug]) }}" method="POST" class="dropzone" id="addPhotosForm">
-        
-            {{ csrf_field() }}
-
-        </form>
-
-    @endif
 
     @section('scripts-footer')
 

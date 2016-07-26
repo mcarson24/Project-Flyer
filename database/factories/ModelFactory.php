@@ -28,6 +28,7 @@ $factory->define(App\Flyer::class, function (Faker\Generator $faker) {
         'state' => $faker->state,
         'country' => $faker->country,
         'price' => $faker->biasedNumberBetween(100000, 1000000),
-        'description' => $faker->paragraphs(4, true)
+        'description' => $faker->paragraphs(4, true),
+        'user_id' => factory(App\User::class)->create()->id,
     ];
 });

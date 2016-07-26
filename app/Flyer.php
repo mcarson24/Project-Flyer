@@ -44,6 +44,17 @@ class Flyer extends Model
     }
 
     /**
+     * Determines if the given user owns the flyer.
+     * 
+     * @param  User   $user 
+     * @return boolean       
+     */
+    public function ownedBy(User $user)
+    {
+        return $this->user_id == $user->id;
+    }
+
+    /**
      * Get the flyers located at a given address.
      * 
      * @param  string $zip    

@@ -1,3 +1,5 @@
+@inject('route', 'Illuminate\Routing\Route')
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -11,8 +13,8 @@
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li class="{{ isActiveRoute('home') }}"><a href="/">Home</a></li>
+        <li class="{{ isActiveRoute('about') }}"><a href="about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
