@@ -41,7 +41,8 @@ function isActiveRoute($route)
 
 /**
  * Return the path of a give flyer.
- * 
+ *
+ * @param  App\Flyer $flyer
  * @return string 
  */
 function flyer_path(App\Flyer $flyer)
