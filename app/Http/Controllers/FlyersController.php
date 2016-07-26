@@ -10,8 +10,6 @@ use App\Flyer;
 use App\Http\Requests;
 use App\Http\Utilities\Country;
 use App\Http\Requests\FlyerFormRequest;
-use App\Http\Requests\ChangeFlyerRequest;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FlyersController extends Controller
@@ -62,20 +60,6 @@ class FlyersController extends Controller
     }
 
     /**
-     * Add a photo to the flyer.
-     * 
-     * @param string  $zip     
-     * @param string  $street  
-     * @param ChangeFlyerRequest $request 
-     */
-    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
-    {
-        $photo = $this->handlePhoto($request->file('photo'));  
-
-        Flyer::locatedAt($zip, $street)->addPhoto($photo);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -120,17 +104,5 @@ class FlyersController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Handle creation and storage of photos.
-     * 
-     * @param  UploadedFile $photo $photo
-     * @return Photo
-     */
-    protected function handlePhoto(UploadedFile $photo)
-    {
-        return Photo::named($photo->getClientOriginalName())->store($photo);
-
     }
 }
