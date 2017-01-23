@@ -15,6 +15,7 @@ Route::auth();
 
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('about', 'PagesController@about')->name('about');
+Route::get('redirect', 'HomeController@redirect');
 
 Route::resource('flyers', 'FlyersController');
 

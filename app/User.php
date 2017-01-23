@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Flyer;
+use Illuminate\Database\Eloquent\hasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -26,16 +27,15 @@ class User extends Authenticatable
     ];
 
     /**
-     * A user can create many flyers.
-     * 
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     * A user may upload many flyers;
+     * @return Illuminate\Database\Eloquent\hasMany
      */
     public function flyers()
     {
         return $this->hasMany(Flyer::class);
     }
 
-    /**
+	/**
      * Determine if the current user owns the submitted object.
      * 
      * @param         $relation 
